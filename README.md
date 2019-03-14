@@ -1,21 +1,32 @@
 # Numword
 
-**TODO: Add description**
+This project will convert the given 10 digit phone number into the list of words.
+https://github.com/vid2010/PhoneDictonary
 
-## Installation
+## Description
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `numword` to your list of dependencies in `mix.exs`:
+Given a 10 digit phone number, you must return all possible words or combination of words from the provided dictionary, that can be mapped back as a whole to the number.
+- With this we can generate numbers like 1-800-motortruck which is easier to remember then 1-800-6686787825.
+- The phone numbers will never contain a 0 or 1.
+- Words have to be at least 3 characters.
+- The conversion of a 10 digit phone number should be performed within 1000ms.
+- The phone number mapping to letters is as follows:
 
-```elixir
-def deps do
-  [
-    {:numword, "~> 0.1.0"}
-  ]
-end
+```
+2 = a b c
+3 = d e f
+4 = g h i
+5 = j k l
+6 = m n o
+7 = p q r s
+8 = t u v
+9 = w x y z
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/numword](https://hexdocs.pm/numword).
+## Test cases
 
+To get give you an initial verification, the following must be true:
+
+- 6686787825 should return the following list [["MOTOR", "TRUCK"]], [["MOTOR", "USUAL"]], [["NOUN", "STRUCK"], ["NOUNS", "TRUCK"]], [["NOUNS", "USUAL"]], [["ONTO", "STRUCK"]]
+
+- 2282668687 should return the following list [["ACT", "AMOUNTS"], ["ACTA", "MOUNTS"]], [["ACT", "CONTOUR"]], [["BAT", "AMOUNTS"]], [["BAT", "CONTOUR"]], [["CAT", "AMOUNTS"]], [["CAT", "CONTOUR"]]
