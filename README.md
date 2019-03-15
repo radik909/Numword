@@ -27,6 +27,6 @@ Given a 10 digit phone number, you must return all possible words or combination
 
 To get give you an initial verification, the following must be true:
 
-- 6686787825 should return the following list [["MOTOR", "TRUCK"]], [["MOTOR", "USUAL"]], [["NOUN", "STRUCK"], ["NOUNS", "TRUCK"]], [["NOUNS", "USUAL"]], [["ONTO", "STRUCK"]]
+- 6686787825 should return the following list [[["MOTOR", "TRUCK"]], [["MOTOR", "USUAL"]], [["NOUN", "STRUCK"], ["NOUNS", "TRUCK"]], [["NOUNS", "USUAL"]], [["ONTO", "STRUCK"]]]
 
-- 2282668687 should return the following list [["ACT", "AMOUNTS"], ["ACTA", "MOUNTS"]], [["ACT", "CONTOUR"]], [["BAT", "AMOUNTS"]], [["BAT", "CONTOUR"]], [["CAT", "AMOUNTS"]], [["CAT", "CONTOUR"]]
+- 2282668687 should return the following list [[["ACT", "AMOUNTS"], ["ACTA", "MOUNTS"]], [["ACT", "CONTOUR"]], [["BAT", "AMOUNTS"]], [["BAT", "CONTOUR"]], [["CAT", "AMOUNTS"]], [["CAT", "CONTOUR"]]]
