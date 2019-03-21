@@ -21,4 +21,16 @@ defmodule NumwordTest do
              [["ACT", "AMOUNTS"], ["ACTA", "MOUNTS"]]
            ]
   end
+
+  test "should raise error when given a string less than 10 characters" do
+    assert_raise FunctionClauseError, fn ->
+      Numword.run("22826687")
+    end
+  end
+
+  test "should raise error when given a string which contains invalid values" do
+    assert_raise KeyError, fn ->
+      Numword.run("123456789a")
+    end
+  end
 end

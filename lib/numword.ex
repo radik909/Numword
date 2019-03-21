@@ -2,7 +2,7 @@ defmodule Numword do
   alias Numword.Dictionary
   @chunks 3..7
 
-  def run(num_string) do
+  def run(num_string) when is_binary(num_string) and byte_size(num_string) == 10 do
     num_string
     |> String.codepoints()
     |> map_to_values()
@@ -13,7 +13,7 @@ defmodule Numword do
 
   defp map_to_values(numword_chars) do
     numword_chars
-    |> Enum.map(&Map.get(mapper(), &1))
+    |> Enum.map(&Map.fetch!(mapper(), &1))
   end
 
   defp convert_to_words([head | remain]) do
