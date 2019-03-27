@@ -7,7 +7,6 @@ defmodule Numword do
     |> String.codepoints()
     |> map_to_values()
     |> convert_to_words()
-    |> divide_into_chunks()
     |> cross_refer_dictionary(Dictionary.value())
   end
 
@@ -41,24 +40,22 @@ defmodule Numword do
     combine(words, remain, result ++ Enum.map(words, &(&1 <> head)))
   end
 
-  defp divide_into_chunks(words) do
-    Enum.map(words, fn word ->
-      Enum.map(@chunks, &String.split_at(word, &1))
-    end)
-  end
-
-  defp cross_refer_dictionary(words_set, dictionary) do
-    Enum.map(words_set, fn words ->
-      Enum.map(words, fn {word1, word2} ->
-        with {:ok, _} <- Map.fetch(dictionary, word1),
-             {:ok, _} <- Map.fetch(dictionary, word2) do
-          [word1, word2]
-        else
-          _ -> nil
-        end
-      end)
-      |> Enum.filter(&(!is_nil(&1)))
-    end)
+  defp cross_refer_dictionary(words, dictionary) do
+    Enum.map(
+      words,
+      fn word ->
+        Enum.map(@chunks, &String.split_at(word, &1))
+        |> Enum.map(fn {word1, word2} ->
+          with {:ok, _} <- Map.fetch(dictionary, word1),
+               {:ok, _} <- Map.fetch(dictionary, word2) do
+            [word1, word2]
+          else
+            _ -> nil
+          end
+        end)
+        |> Enum.filter(&(!is_nil(&1)))
+      end
+    )
     |> Enum.filter(&(&1 != []))
   end
 
